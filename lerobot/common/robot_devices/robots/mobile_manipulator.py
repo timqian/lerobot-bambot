@@ -316,7 +316,7 @@ class MobileManipulator:
         """
         frames = {}
         present_speed = {}
-        remote_arm_state_tensor = torch.zeros(6, dtype=torch.float32)
+        remote_arm_state_tensor = torch.zeros(12, dtype=torch.float32)
 
         # Poll up to 15 ms
         poller = zmq.Poller()
@@ -481,18 +481,18 @@ class MobileManipulator:
         if not self.is_connected:
             raise RobotDeviceNotConnectedError("Not connected. Run `connect()` first.")
 
-        # Ensure the action tensor has at least 9 elements:
-        #   - First 6: arm positions.
+        # Ensure the action tensor has at least 15 elements:
+        #   - First 12: arm positions.
         #   - Last 3: base commands.
-        if action.numel() < 9:
+        if action.numel() < 15:
             # Pad with zeros if there are not enough elements.
-            padded = torch.zeros(9, dtype=action.dtype)
+            padded = torch.zeros(15, dtype=action.dtype)
             padded[: action.numel()] = action
             action = padded
 
         # Extract arm and base actions.
-        arm_actions = action[:6].flatten()
-        base_actions = action[6:].flatten()
+        arm_actions = action[:12].flatten()
+        base_actions = action[12:].flatten()
 
         x_cmd_mm = base_actions[0].item()  # mm/s
         y_cmd_mm = base_actions[1].item()  # mm/s

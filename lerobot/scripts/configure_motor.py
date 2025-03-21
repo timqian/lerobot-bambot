@@ -93,7 +93,7 @@ def configure_motor(port, brand, model, motor_idx_des, baudrate_des):
 
         for baudrate in all_baudrates:
             motor_bus.set_bus_baudrate(baudrate)
-            present_ids = motor_bus.find_motor_indices(list(range(1, 10)))
+            present_ids = motor_bus.find_motor_indices(list(range(1, 20)))
             if len(present_ids) > 1:
                 raise ValueError(
                     "Error: More than one motor ID detected. This script is designed to only handle one motor at a time. Please disconnect all but one motor."

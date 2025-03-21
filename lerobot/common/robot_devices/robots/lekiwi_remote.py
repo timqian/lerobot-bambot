@@ -116,7 +116,7 @@ def run_lekiwi(robot_config):
     robot = LeKiwi(motors_bus)
 
     # Define the expected arm motor IDs.
-    arm_motor_ids = ["shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll", "gripper"]
+    arm_motor_ids = ["shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wrist_roll", "gripper", "shoulder_pan_extra", "shoulder_lift_extra", "elbow_flex_extra", "wrist_flex_extra", "wrist_roll_extra", "gripper_extra"]
 
     # Disable torque for each arm motor.
     for motor in arm_motor_ids:

@@ -539,17 +539,17 @@ class LeKiwiRobotConfig(RobotConfig):
     max_relative_target: int | None = None
 
     # Network Configuration
-    ip: str = "192.168.0.193"
+    ip: str = "192.168.2.13"
     port: int = 5555
     video_port: int = 5556
 
     cameras: dict[str, CameraConfig] = field(
         default_factory=lambda: {
+            # "front": OpenCVCameraConfig(
+            #     camera_index=0, fps=30, width=640, height=480, rotation=90
+            # ),
             "front": OpenCVCameraConfig(
-                camera_index="/dev/video0", fps=30, width=640, height=480, rotation=90
-            ),
-            "wrist": OpenCVCameraConfig(
-                camera_index="/dev/video2", fps=30, width=640, height=480, rotation=180
+                camera_index=1, fps=30, width=640, height=480, rotation=0
             ),
         }
     )
@@ -559,7 +559,7 @@ class LeKiwiRobotConfig(RobotConfig):
     leader_arms: dict[str, MotorsBusConfig] = field(
         default_factory=lambda: {
             "main": FeetechMotorsBusConfig(
-                port="/dev/tty.usbmodem585A0077581",
+                port="/dev/tty.usbmodem578E0211121",
                 motors={
                     # name: (index, model)
                     "shoulder_pan": [1, "sts3215"],
@@ -568,6 +568,12 @@ class LeKiwiRobotConfig(RobotConfig):
                     "wrist_flex": [4, "sts3215"],
                     "wrist_roll": [5, "sts3215"],
                     "gripper": [6, "sts3215"],
+                    "shoulder_pan_extra": [7, "sts3215"],
+                    "shoulder_lift_extra": [8, "sts3215"],
+                    "elbow_flex_extra": [9, "sts3215"],
+                    "wrist_flex_extra": [10, "sts3215"],
+                    "wrist_roll_extra": [11, "sts3215"],
+                    "gripper_extra": [12, "sts3215"],
                 },
             ),
         }
@@ -576,7 +582,7 @@ class LeKiwiRobotConfig(RobotConfig):
     follower_arms: dict[str, MotorsBusConfig] = field(
         default_factory=lambda: {
             "main": FeetechMotorsBusConfig(
-                port="/dev/ttyACM0",
+                port="/dev/tty.usbmodem578E0210721",
                 motors={
                     # name: (index, model)
                     "shoulder_pan": [1, "sts3215"],
@@ -585,9 +591,15 @@ class LeKiwiRobotConfig(RobotConfig):
                     "wrist_flex": [4, "sts3215"],
                     "wrist_roll": [5, "sts3215"],
                     "gripper": [6, "sts3215"],
-                    "left_wheel": (7, "sts3215"),
-                    "back_wheel": (8, "sts3215"),
-                    "right_wheel": (9, "sts3215"),
+                    "shoulder_pan_extra": [7, "sts3215"],
+                    "shoulder_lift_extra": [8, "sts3215"],
+                    "elbow_flex_extra": [9, "sts3215"],
+                    "wrist_flex_extra": [10, "sts3215"],
+                    "wrist_roll_extra": [11, "sts3215"],
+                    "gripper_extra": [12, "sts3215"],
+                    "left_wheel": [13, "sts3215"],
+                    "back_wheel": [14, "sts3215"],
+                    "right_wheel": [15, "sts3215"],
                 },
             ),
         }
