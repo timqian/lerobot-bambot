@@ -6,6 +6,6 @@ Bambot is essentially a two-armed [lekiwi](./examples/11_use_lekiwi.md). To use 
 
 1. Clone this repository instead of the official LeRobot repository. The modifications required for Bambot compatibility are included in [this commit](https://github.com/timqian/lerobot-bambot/commit/52fba4e85fa29e29cdd83a64ac15791e710f792a).
 2. For the follower, connect 2 arms and 3 wheels to the same board. Set the motor IDs as shown below:
-    <img src="./media/bambot/motor_ids.jpg" alt="Motor IDs for Bambot" title="Motor IDs for Bambot" width="60%">
+    <img src="https://github.com/user-attachments/assets/98890fbc-f366-46f4-a3e4-80ea5d80c853" alt="Motor IDs for Bambot" title="Motor IDs for Bambot" width="60%">
 3. For the leader, the motor IDs for both arms are the same, but only 12 motors are needed.
 4. During calibration, ensure both arms are placed in the same position simultaneously.
